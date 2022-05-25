@@ -1,19 +1,8 @@
-//DOM elements
+//Password Element
 
 const passwordEl = document.getElementById("password");
-// const lengthEl = document.getElementById('length');
-// const uppercaseEl = document.getElementById('uppercase');
-// const lowercaseEl = document.getElementById('lowercase');
-// const numbersEl = document.getElementById('numbers');
-// const characterEl = document.getElementById('character');
-// const generateEl = document.getElementById('generate');
-// const clipboardEl = document.getElementById('password');
 
-// console.log(lower);
-
-// generateEl.addEventListener('click', () => {
-
-// })
+//randomFunc Object
 
 const randomFunc = {
   lower: getRandomLower,
@@ -41,10 +30,7 @@ function getRandomCharacter() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-// console.log(getRandomLower());
-// console.log(getRandomUpper());
-// console.log(getRandomNumber());
-// console.log(getRandomCharacter());
+//Series of prompts
 
 function promptMe() {
   let stringLengthAnswer = prompt(
@@ -68,11 +54,7 @@ function promptMe() {
     "Should the password contain special characters?"
   );
 
-  // console.log(numericLengthAnswer);
-  // console.log(stringLowerAnswer);
-  // console.log(stringUpperAnswer);
-  // console.log(stringNumberAnswer);
-  // console.log(stringCharacterAnswer);
+//Password Element Inner Text
 
   passwordEl.innerText = generatePassword(
     stringLowerAnswer,
@@ -83,6 +65,8 @@ function promptMe() {
   );
 }
 
+//generatePassword Function
+
 function generatePassword(
   lower,
   upper,
@@ -90,32 +74,21 @@ function generatePassword(
   character,
   numericLengthAnswer
 ) {
-  //1. Init pw var
-  //2. Filter out unchecked types
-  //3. Loop over length, call generator function for each type
-  //4. Add final pw to pw var and return it
-
   let generatedPassword = "";
 
   if (numericLengthAnswer <= 7) {
-    console.log('gotcha');
-    return "Password must be at least 8 characters in length"
+    return "Password must be at least 8 characters in length";
   }
 
   if (numericLengthAnswer >= 129) {
-    console.log('gotcha');
-    return "Password cannot be more than 128 characters in length"
+    return "Password cannot be more than 128 characters in length";
   }
 
   const typesCount = lower + upper + number + character;
 
-  // console.log('typesCount: ', typesCount);
-
   const typesArr = [{ lower }, { upper }, { number }, { character }].filter(
     (item) => Object.values(item)[0]
   );
-
-  // console.log('typesArr: ', typesArr);
 
   if (typesCount === 0) {
     return "At least one character type must be selected to generate password";
@@ -124,8 +97,6 @@ function generatePassword(
   for (let i = 0; i < numericLengthAnswer; i += typesCount) {
     typesArr.forEach((type) => {
       const funcName = Object.keys(type)[0];
-      // console.log("funcName: ", funcName);
-
       generatedPassword += randomFunc[funcName]();
     });
   }
@@ -134,30 +105,3 @@ function generatePassword(
 
   return finalPassword;
 }
-
-// function generateLength(){
-//   const length = numericLengthAnswer;
-//   console.log(hasLower);
-// }
-
-// function generateLower(){
-
-// if (stringLowerAnswer==true)
-//   {}
-
-// }
-
-// // Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
-
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
