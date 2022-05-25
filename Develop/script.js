@@ -97,6 +97,15 @@ function generatePassword(
 
   let generatedPassword = "";
 
+  if (numericLengthAnswer <= 7) {
+    console.log('gotcha');
+    return "Password must be at least 8 characters in length"
+  }
+
+  if (numericLengthAnswer >= 129) {
+    console.log('gotcha');
+    return "Password cannot be more than 128 characters in length"
+  }
 
   const typesCount = lower + upper + number + character;
 
