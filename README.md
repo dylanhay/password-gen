@@ -19,9 +19,9 @@ https://www.gnu.org/licenses/gpl-3.0
 https://dylanhay.github.io/password-gen/
 
 ## Built With
+* JavaScript
 * HTML
 * CSS
-* JavaScript
 * Git
 * GitHub Pages
 
